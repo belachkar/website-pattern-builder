@@ -1,0 +1,51 @@
+{
+  "name": "website-pattern-builder",
+  "version": "0.0.1",
+  "description": "Build html web site with automataed tasks (lint, minify, compress, watch, serve, build)",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass --output-style compressed -o dist/css src/scss",
+    "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
+    "lint": "eslint src/js",
+    "uglify": "mkdir -p dist/js && uglifyjs src/js/*.js -m -o dist/js/app.js && uglifyjs src/js/*.js -m -c -o dist/js/app.min.js",
+    "imagemin": "imagemin src/images dist/images -p",
+    "icons": "svgo -f src/images/icons && mkdir -p dist/images && svg-sprite-generate -d src/images/icons -o dist/images/icons.svg",
+    "serve": "browser-sync start --server --files 'dist/css/*.css, dist/js/*.js'",
+    "build:css": "npm run scss && npm run autoprefixer",
+    "build:js": "npm run lint &amp;&amp; npm run uglify",
+    "build:images": "npm run imagemin && npm run icons",
+    "build:all": "npm run build:css && npm run build:js && npm run build:images",
+    "watch:css": "onchange 'src/scss/*.scss' -- npm run build:css",
+    "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
+    "watch:all": "parallelshell 'npm run serve' 'npm run watch:css' 'npm run watch:js'",
+    "postinstall": "npm run watch:all"
+  },
+  "keywords": [
+    "html",
+    "sass",
+    "autoprefix",
+    "lint",
+    "uglifying",
+    "compressing",
+    "images",
+    "svg",
+    "sprites",
+    "watching",
+    "server"
+  ],
+  "author": "Belachkar Ali",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.5.1",
+    "browser-sync": "^2.26.5",
+    "eslint": "^5.16.0",
+    "imagemin-cli": "^4.0.1",
+    "node-sass": "^4.12.0",
+    "onchange": "^6.0.0",
+    "parallelshell": "^3.0.2",
+    "postcss-cli": "^6.1.2",
+    "svg-sprite-generator": "0.0.7",
+    "svgo": "^1.2.2",
+    "uglify-js": "^3.5.15"
+  }
+}

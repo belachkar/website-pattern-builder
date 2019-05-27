@@ -1,0 +1,5 @@
+# installed modules
+node_modules
+
+# VS Code config dir
+.vscode
