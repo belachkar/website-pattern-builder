@@ -1,7 +1,7 @@
 {
   "name": "website-pattern-builder",
   "version": "0.0.1",
-  "description": "Build html web site with automataed tasks (lint, minify, compress, watch, serve, build)",
+  "description": "Build html web site with automated tasks (lint, minify, compress, watch, serve, build)",
   "main": "index.js",
   "scripts": {
     "scss": "node-sass --output-style compressed -o dist/css src/scss",
