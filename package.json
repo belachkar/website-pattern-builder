@@ -40,7 +40,7 @@
     "browser-sync": "^2.26.7",
     "eslint": "^5.16.0",
     "imagemin-cli": "^4.0.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "onchange": "^6.0.0",
     "parallelshell": "^3.0.2",
     "postcss-cli": "^6.1.2",
